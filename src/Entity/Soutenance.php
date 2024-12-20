@@ -23,12 +23,13 @@ class Soutenance
     #[ORM\Column]
     private ?float $note = null;
 
+    // Utiliser la bonne casse pour les relations avec Enseignant et Etudiant
     #[ORM\ManyToOne]
-    private ?enseignant $enseignant = null;
+    private ?Enseignant $enseignant = null;
 
     #[ORM\OneToOne(inversedBy: 'soutenance', cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
-    private ?etudiant $etudiant = null;
+    private ?Etudiant $etudiant = null;
 
     public function getId(): ?int
     {
@@ -71,24 +72,24 @@ class Soutenance
         return $this;
     }
 
-    public function getEnseignant(): ?enseignant
+    public function getEnseignant(): ?Enseignant
     {
         return $this->enseignant;
     }
 
-    public function setEnseignant(?enseignant $enseignant): static
+    public function setEnseignant(?Enseignant $enseignant): static
     {
         $this->enseignant = $enseignant;
 
         return $this;
     }
 
-    public function getEtudiant(): ?etudiant
+    public function getEtudiant(): ?Etudiant
     {
         return $this->etudiant;
     }
 
-    public function setEtudiant(etudiant $etudiant): static
+    public function setEtudiant(Etudiant $etudiant): static
     {
         $this->etudiant = $etudiant;
 
